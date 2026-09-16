@@ -193,7 +193,7 @@ public class Veterinaria {
         if (indexDuenio == -1){
             Main.mostrarMensaje("Duenio no encontrado");
             return;
-        }-
+        }
         Person person = listaPersonas[indexDuenio];
         String nombresMascotas = "";
         Pet[] mascotas = person.getListPets();
@@ -204,7 +204,7 @@ public class Veterinaria {
                 if (nombresMascotas.length() > 0) {
                     nombresMascotas = nombresMascotas + ", ";
                 }
-                nombresMascotas = nombresMascotas + mascota.getName();
+                nombresMascotas += mascota.getName();
             }
         }
         if (nombresMascotas.length() == 0) {

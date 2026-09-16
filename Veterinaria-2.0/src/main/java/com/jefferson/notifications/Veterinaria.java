@@ -8,6 +8,7 @@ public class Veterinaria {
     private Pet[] listaMascotas;
     private Person[] listaPersonas;
 
+    //constructor
     public Veterinaria(String nit, String name) {
         this.nit = nit;
         this.name = name;
@@ -185,7 +186,6 @@ public class Veterinaria {
     }
 
     //Buscar duenio por id
-
     public void buscarDuenioId(){
         String idDuenio = Main.pedirDatos("Ingrese el ID del duenio a buscar");
         int indexDuenio = buscarIndicePersonaPorId(idDuenio);
@@ -193,31 +193,31 @@ public class Veterinaria {
         if (indexDuenio == -1){
             Main.mostrarMensaje("Duenio no encontrado");
             return;
-        }
-
+        }-
         Person person = listaPersonas[indexDuenio];
+        String nombresMascotas = "";
+        Pet[] mascotas = person.getListPets();
 
-        StringBuilder nombresMascotas = new StringBuilder();
-        for (Pet mascota : person.getListPets()) {
+        for (int i = 0; i < mascotas.length; i++) {
+            Pet mascota = mascotas[i];
             if (mascota != null) {
                 if (nombresMascotas.length() > 0) {
-                    nombresMascotas.append(", ");
+                    nombresMascotas = nombresMascotas + ", ";
                 }
-                nombresMascotas.append(mascota.getName());
+                nombresMascotas = nombresMascotas + mascota.getName();
             }
         }
         if (nombresMascotas.length() == 0) {
-            nombresMascotas.append("Sin mascotas registradas");
+            nombresMascotas = "Sin mascotas registradas";
         }
-
         String mensaje = "Id: "+ person.getId()+"\n" +
                 "Nombre: "+person.getName()+"\n" +
                 "Direccion: "+person.getAddress()+"\n" +
                 "Telefono: "+ person.getPhoneNumber()+"\n" +
                 "Mascota(s): "+ nombresMascotas;
-
         Main.mostrarMensaje(mensaje);
     }
+
 
 
     //Eliminar mascota por su id

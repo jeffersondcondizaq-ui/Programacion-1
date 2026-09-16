@@ -12,7 +12,7 @@ public class Main {
         veterinaria = new Veterinaria(nit, nombreVeterinaria);
 
         int option = 0;
-        String mensaje = "Bienbenido a " + veterinaria.getName() + ": \n" +
+        String mensaje = "Bienvenido a " + veterinaria.getName() + ": \n" +
                 "Selecciones una de las operaciones \n" +
                 "1.Registar mascota\n" +
                 "2.Visualizar mascotar\n" +

@@ -3,9 +3,7 @@ package com.jefferson.notifications;
 import javax.swing.*;
 
 public class Main {
-
     static Veterinaria veterinaria;
-
     static void main() {
         String nit = pedirDatos("NIT de la veterinaria: ");
         String nombreVeterinaria = pedirDatos("Nombre de la veterinaria: ");
@@ -63,18 +61,14 @@ public class Main {
         }while (option != 0);
 
     }
-
     //---------------------------Pedir datos-----------------------------
-    //Data
     static String pedirDatos(String mensaje){
         return JOptionPane.showInputDialog(mensaje, null);
     }
-
     //mensajes
     static void mostrarMensaje (String mensaje){
         JOptionPane.showMessageDialog(null,mensaje);
     }
-
     //Opcion de menu
     static int pedirOpcion(String mensaje) {
         while (true) {

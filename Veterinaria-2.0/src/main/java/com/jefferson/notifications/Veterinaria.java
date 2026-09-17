@@ -53,7 +53,6 @@ public class Veterinaria {
             Main.mostrarMensaje("El ID de la mascota ya esta registardo");
             return listaMascotas[indiceMascota];
         }
-
         for (int i = 0; i < listaMascotas.length ; i++) {
             if(listaMascotas[i] == null){
 
@@ -63,7 +62,6 @@ public class Veterinaria {
                     Main.mostrarMensaje("No se pudo registrar el propietario. Registro cancelado.");
                     return null;
                 }
-
                 Pet mascota = new Pet(
                         Main.pedirDatos("Nombre mascota: "),
                         Main.pedirDatos("Especie mascota: "),
@@ -72,7 +70,6 @@ public class Veterinaria {
                         id,
                         propietario
                 );
-
                 listaMascotas[i] = mascota;
                 agregarMascotaAPersona(propietario, mascota);
 
@@ -94,7 +91,6 @@ public class Veterinaria {
             Main.mostrarMensaje("Propietario encontrado: " + listaPersonas[indexPersona].getName());
             return listaPersonas[indexPersona];
         }
-
         // No existe, se crea una nueva persona
         for (int i = 0; i < listaPersonas.length; i++) {
             if (listaPersonas[i] == null) {
@@ -217,8 +213,6 @@ public class Veterinaria {
                 "Mascota(s): "+ nombresMascotas;
         Main.mostrarMensaje(mensaje);
     }
-
-
 
     //Eliminar mascota por su id
 
@@ -388,39 +382,35 @@ public class Veterinaria {
         for (int i = 0; i < listaPersonas.length; i++) {
             if (listaPersonas[i] != null){
                 Person duenio = listaPersonas[i];
+                String nombresMascotas = "";
+                Pet[] mascotas = duenio.getListPets();
 
-                StringBuilder nombresMascotas = new StringBuilder();
-                for (Pet mascota : duenio.getListPets()) {
+                for (int j = 0; j < mascotas.length; j++) {
+                    Pet mascota = mascotas[j];
                     if (mascota != null) {
                         if (nombresMascotas.length() > 0) {
-                            nombresMascotas.append(", ");
+                            nombresMascotas = nombresMascotas + ", ";
                         }
-                        nombresMascotas.append(mascota.getName());
+                        nombresMascotas = nombresMascotas + mascota.getName();
                     }
                 }
                 if (nombresMascotas.length() == 0) {
-                    nombresMascotas.append("Sin mascotas registradas");
+                    nombresMascotas = "Sin mascotas registradas";
                 }
-
                 String mensaje = "Duenio #" + (i + 1) + "\n" +
                         "ID: " + duenio.getId() + "\n" +
                         "Nombre: " + duenio.getName() + "\n" +
                         "Direccion: " + duenio.getAddress() + "\n" +
                         "Telefono: " + duenio.getPhoneNumber() + "\n" +
                         "Mascota(s): " + nombresMascotas;
-
                 Main.mostrarMensaje(mensaje);
-
                 hayDuenios = true;
             }
         }
-
         if (!hayDuenios) {
             Main.mostrarMensaje("No hay duenios registrados.");
         }
     }
-
-
     // Buscar el indice de la mascota por id
     public int buscarIndiceMascotaPorId(String id){
         for (int i = 0; i < listaMascotas.length; i++) {
@@ -430,7 +420,6 @@ public class Veterinaria {
         }
         return -1;
     }
-
     // Buscar el indice de una persona por id
     public int buscarIndicePersonaPorId(String id){
         for (int i = 0; i < listaPersonas.length; i++) {
